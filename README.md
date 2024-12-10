@@ -1,0 +1,2 @@
+# Mypyshop
+DjangoPython onlineShop
