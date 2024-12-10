@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Warenkorb{% endblock %}
+
+{% block content %}
+<h1>Warenkorb</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produkt</th>
+            <th>Menge</th>
+            <th>Preis</th>
+            <th>Aktion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart_items %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.get_total_price }} €</td>
+            <td>
+                <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger">Entfernen</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p><strong>Gesamt: {{ total_price }} €</strong></p>
+{% endblock %}
